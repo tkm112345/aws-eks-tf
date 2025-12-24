@@ -13,27 +13,27 @@ data "aws_availability_zones" "available" {
 
 # EKS用のAMI情報を取得 (ノードグループで使用する最新AMI)
 data "aws_eks_cluster_auth" "cluster" {
-    name = module.eks.cluster_name
+  name = module.eks.cluster_name
 
-    depends_on = [module.eks]
+  depends_on = [module.eks]
 }
 
 # EKSクラスタの詳細情報を取得
 data "aws_eks_cluster" "cluster" {
-    name = module.eks.cluster_name
+  name = module.eks.cluster_name
 
-    depends_on = [module.eks]
+  depends_on = [module.eks]
 }
 
 # TLS証明書の取得 (OIDC Provider用)
 data "tls_certificate" "cluster" {
-    url = data.aws_eks_cluster.cluster.identity[0].oidc[0].issuer
+  url = data.aws_eks_cluster.cluster.identity[0].oidc[0].issuer
 }
 
 # EKS最適化AMIの取得
 data "aws_ami" "eks_default" {
-    most_recent = true
-    owners = ["amazon"]
+  most_recent = true
+  owners      = ["amazon"]
 
   filter {
     name   = "name"

@@ -5,12 +5,12 @@ locals {
   # 共通タグの定義
   common_tags = merge(
     {
-      Environment     = var.environment
-      Project         = var.project_name
-      ManagedBy       = "terraform"
-      Owner           = var.owner
-      CostCenter      = var.cost_center
-      CreatedDate     = formatdate("YYYY-MM-DD", timestamp())
+      Environment = var.environment
+      Project     = var.project_name
+      ManagedBy   = "terraform"
+      Owner       = var.owner
+      CostCenter  = var.cost_center
+      CreatedDate = formatdate("YYYY-MM-DD", timestamp())
     },
     var.additional_tags
   )

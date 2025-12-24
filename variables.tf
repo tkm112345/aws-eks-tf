@@ -12,7 +12,7 @@ variable "environment" {
   type        = string
   default     = "personal"
   validation {
-    condition = contains(["personal", "dev", "staging", "prod"], var.environment)
+    condition     = contains(["personal", "dev", "staging", "prod"], var.environment)
     error_message = "Environment must be personal, dev, staging, prod."
   }
 }
@@ -37,87 +37,87 @@ variable "cost_center" {
 
 # EKSクラスター設定
 variable "kubernetes_version" {
-    description = "Kubernetesバージョン"
-    type = string
-    default = "1.33"
+  description = "Kubernetesバージョン"
+  type        = string
+  default     = "1.33"
 }
 
 variable "cluster_endpoint_public_access" {
-    description = "EKSクラスターのパブリックエンドポイントアクセスを有効にするかどうか"
-    type = bool
-    default = true
+  description = "EKSクラスターのパブリックエンドポイントアクセスを有効にするかどうか"
+  type        = bool
+  default     = true
 }
 
 variable "cluster_endpoint_private_access" {
-    description = "EKSクラスターのプライベートエンドポイントアクセスを有効にするかどうか"
-    type = bool
-    default = false
+  description = "EKSクラスターのプライベートエンドポイントアクセスを有効にするかどうか"
+  type        = bool
+  default     = false
 }
 
 variable "cluster_endpoint_public_access_cidrs" {
-    description = "EKSクラスターのパブリックエンドポイントにアクセスを許可するCIDRブロックのリスト"
-    type = list(string)
-    default = ["0.0.0.0/0"]
+  description = "EKSクラスターのパブリックエンドポイントにアクセスを許可するCIDRブロックのリスト"
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
 }
 
 # ノードグループ設定
 variable "node_group_instance_types" {
-    description = "EKSノードグループのインスタンスタイプ"
-    type = list(string)
-    default = ["t3.small"]
+  description = "EKSノードグループのインスタンスタイプ"
+  type        = list(string)
+  default     = ["t3.small"]
 }
 
 variable "node_group_capacity_type" {
-    description = "EKSノードグループのキャパシティタイプ (ON_DEMANDまたはSPOT)"
-    type = string
-    default = "ON_DEMAND"
-    validation {
-        condition = contains(["ON_DEMAND", "SPOT"], var.node_group_capacity_type)
-        error_message = "Node group capacity type must be ON_DEMAND or SPOT."
-    }
+  description = "EKSノードグループのキャパシティタイプ (ON_DEMANDまたはSPOT)"
+  type        = string
+  default     = "ON_DEMAND"
+  validation {
+    condition     = contains(["ON_DEMAND", "SPOT"], var.node_group_capacity_type)
+    error_message = "Node group capacity type must be ON_DEMAND or SPOT."
+  }
 }
 
 variable "node_group_ami_type" {
-    description = "EKSノードグループのAMIタイプ"
-    type = string
-    default = "AL2_x86_64"
+  description = "EKSノードグループのAMIタイプ"
+  type        = string
+  default     = "AL2_x86_64"
 }
 
 variable "node_group_disk_size" {
-    description = "ワーカーノードのディスクサイズ(GB)"
-    type = number
-    default = 10
+  description = "ワーカーノードのディスクサイズ(GB)"
+  type        = number
+  default     = 10
 }
 
 variable "node_group_desired_capacity" {
-    description = "EKSノードグループの希望するキャパシティ"
-    type = number
-    default = 1
+  description = "EKSノードグループの希望するキャパシティ"
+  type        = number
+  default     = 1
 }
 
 variable "node_group_max_capacity" {
-    description = "ワーカーノードの最大数"
-    type = number
-    default = 2
+  description = "ワーカーノードの最大数"
+  type        = number
+  default     = 2
 }
 
 variable "node_group_min_capacity" {
-    description = "ワーカーノードの最小数"
-    type = number
-    default = 1
+  description = "ワーカーノードの最小数"
+  type        = number
+  default     = 1
 }
 
 # VPC設定
 variable "vpc_cidr" {
-    description = "VPCのCIDRブロック"
-    type = string
-    default = "10.0.0.0/16"
+  description = "VPCのCIDRブロック"
+  type        = string
+  default     = "10.0.0.0/16"
 }
 
 variable "enable_nat_gateway" {
-    description = "NAT Gatewayを有効にするかどうか"
-    type = bool
-    default = true
+  description = "NAT Gatewayを有効にするかどうか"
+  type        = bool
+  default     = true
 }
 
 variable "single_nat_gateway" {
@@ -153,20 +153,20 @@ variable "enable_cluster_autoscaler" {
 
 # セキュリティ設定
 variable "enable_cluster_encryption" {
-    description = "EKSクラスターの暗号化を有効にするかどうか"
-    type = bool
-    default = true
+  description = "EKSクラスターの暗号化を有効にするかどうか"
+  type        = bool
+  default     = true
 }
 
 variable "cluster_enabled_log_types" {
-    description = "有効にするEKSクラスタのログタイプ"
-    type = list(string)
-    default = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+  description = "有効にするEKSクラスタのログタイプ"
+  type        = list(string)
+  default     = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 }
 
 # タグ設定
 variable "additional_tags" {
-    description = "追加のタグ"
-    type = map(string)
-    default = {}
+  description = "追加のタグ"
+  type        = map(string)
+  default     = {}
 }
