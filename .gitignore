@@ -7,3 +7,6 @@ mise.toml
 *.tfstate.*
 .terraform.lock.hcl
 *.tfvars
+
+# Local settings to ignore
+.claude/
