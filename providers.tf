@@ -16,11 +16,3 @@ provider "aws" {
   }
 }
 
-
-# 現在のAWSカラーアイデンティティを取得
-data "aws_caller_identity" "current" {}
-
-# 利用可能なアベイラビリティゾーンを取得
-data "aws_availability_zones" "available" {
-  state = "available"
-}

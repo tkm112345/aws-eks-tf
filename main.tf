@@ -44,12 +44,12 @@ module "eks" {
   control_plane_subnet_ids = module.vpc.private_subnets
 
   # 暗号化設定
-  cluster_encryption_config = var.enable_cluster_encryption ? [
-    {
-      provider_key_arn = aws_kms_key.eks[0].arn
-      resources        = ["secrets"]
+  cluster_encryption_config = var.enable_cluster_encryption ? {
+    resources = ["secrets"]
+    provider = {
+      key_arn = aws_kms_key.eks[0].arn
     }
-  ] : []
+  } : null
 
   # CloudWatch Logs設定
   cluster_enabled_log_types              = var.cluster_enabled_log_types

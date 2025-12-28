@@ -1,13 +1,7 @@
 # vpc.tf
 # VPCおよび関連ネットワークリソースの定義
 
-locals {
-  # クラスター名を定義（EKSリソースのタグ付けに使用）
-  cluster_name = "${var.project_name}-${var.environment}-eks"
 
-  # 使用するアベイラビリティゾーンの数を決定
-  azs = slice(data.aws_availability_zones.available.names, 0, 3)
-}
 
 # VPCモジュールを使用してネットワークインフラを作成
 module "vpc" {
