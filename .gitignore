@@ -1,1 +1,9 @@
 mise.toml
+
+# Terraform files to ignore
+.terraform/
+*.tfplan
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+*.tfvars
