@@ -30,26 +30,7 @@ data "tls_certificate" "cluster" {
   url = data.aws_eks_cluster.cluster.identity[0].oidc[0].issuer
 }
 
-# EKS最適化AMIの取得
-data "aws_ami" "eks_default" {
-  most_recent = true
-  owners      = ["amazon"]
 
-  filter {
-    name   = "name"
-    values = ["amazon-eks-node-${var.kubernetes_version}-v*"]
-  }
-
-  filter {
-    name   = "architecture"
-    values = ["x86_64"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-}
 
 # VPC CNI最新バージョンの取得
 data "aws_eks_addon_version" "vpc_cni" {

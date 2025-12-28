@@ -2,6 +2,9 @@ locals {
   # クラスター名の生成
   cluster_name = "${var.project_name}-${var.environment}-eks"
 
+  # 使用するアベイラビリティゾーンの数を決定
+  azs = slice(data.aws_availability_zones.available.names, 0, 3)
+
   # 共通タグの定義
   common_tags = merge(
     {
