@@ -98,7 +98,7 @@ variable "node_group_desired_capacity" {
 variable "node_group_max_capacity" {
   description = "ワーカーノードの最大数"
   type        = number
-  default     = 2
+  default     = 1
 }
 
 variable "node_group_min_capacity" {
@@ -123,7 +123,7 @@ variable "enable_nat_gateway" {
 variable "single_nat_gateway" {
   description = "単一のNAT Gatewayを使用するかどうか（コスト削減のため）"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "enable_dns_hostnames" {
@@ -138,18 +138,6 @@ variable "enable_dns_support" {
   default     = true
 }
 
-# アドオン設定
-variable "enable_aws_load_balancer_controller" {
-  description = "AWS Load Balancer Controllerを有効にするかどうか"
-  type        = bool
-  default     = true
-}
-
-variable "enable_cluster_autoscaler" {
-  description = "Cluster Autoscalerを有効にするかどうか"
-  type        = bool
-  default     = false
-}
 
 # セキュリティ設定
 variable "enable_cluster_encryption" {
