@@ -1,0 +1,80 @@
+# terraform.tfvars.example
+
+# 基本設定
+# AWSリージョン
+# aws_region = "ap-northeast-1"
+# aws_profile = "default"
+
+# 環境 (dev, staging, prod)
+# environment = "personal"
+
+# プロジェクト名
+# project_name = "my-eks-project"
+
+# リソースの所有者
+# owner = "aws-eks-admin"
+
+# コストセンター
+# cost_center = "CC1001"
+
+# EKSクラスター設定
+# Kubernetesバージョン
+# kubernetes_version = "1.33"
+
+# EKSクラスターのパブリックエンドポイントアクセスを有効にするかどうか
+# cluster_endpoint_public_access = true
+
+# EKSクラスターのプライベートエンドポイントアクセスを有効にするかどうか
+# cluster_endpoint_private_access = false
+
+# EKSクラスターのパブリックエンドポイントにアクセスを許可するCIDRブロックのリスト
+# cluster_endpoint_public_access_cidrs = ["0.0.0.0/0"]
+
+# ノードグループ設定
+# EKSノードグループのインスタンスタイプ
+# node_group_instance_types = ["t3.small"]
+
+# EKSノードグループのキャパシティタイプ (ON_DEMANDまたはSPOT)
+# node_group_capacity_type = "ON_DEMAND"
+
+# EKSノードグループのAMIタイプ
+# node_group_ami_type = "AL2_x86_64"
+
+# ワーカーノードのディスクサイズ(GB)
+# node_group_disk_size = 10
+
+# EKSノードグループの希望するキャパシティ
+# node_group_desired_capacity = 1
+
+# ワーカーノードの最大数
+# node_group_max_capacity = 1
+
+# ワーカーノードの最小数
+# node_group_min_capacity = 1
+
+# VPC設定
+# VPCのCIDRブロック
+# vpc_cidr = "10.0.0.0/16"
+
+# NAT Gatewayを有効にするかどうか
+# enable_nat_gateway = true
+
+# 単一のNAT Gatewayを使用するかどうか（コスト削減のため）
+# single_nat_gateway = true
+
+# VPCでDNSホスト名を有効にするかどうか
+# enable_dns_hostnames = true
+
+# VPCでDNSサポートを有効にするかどうか
+# enable_dns_support = true
+
+# セキュリティ設定
+# EKSクラスターの暗号化を有効にするかどうか
+# enable_cluster_encryption = true
+
+# 有効にするEKSクラスタのログタイプ
+# cluster_enabled_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+
+# タグ設定
+# 追加のタグ
+# additional_tags = {}
