@@ -20,16 +20,34 @@ Before proceeding, please ensure the following tools are installed and configure
 
 ## 2. TerraformによるEKSクラスタの構築 / Deploying the EKS Cluster with Terraform
 
-### Step 2.1: Terraformの初期化 / Initialize Terraform
+### Step 2.1: 設定ファイルの準備 / Prepare Configuration Files
 
-まず、Terraformのワーキングディレクトリを初期化します。これにより、必要なプロバイダプラグインがダウンロードされます。
-First, initialize the Terraform working directory. This will download the necessary provider plugins.
+Terraformを実行する前に、ご自身の環境に合わせて設定ファイルを準備します。
+Before running Terraform, prepare the configuration files according to your environment.
+
+1.  **変数値の設定 / Set Variable Values**
+
+    `terraform.tfvars.example` ファイルをコピーして `terraform.tfvars` という名前のファイルを作成します。
+    Copy the `terraform.tfvars.example` file to create a new file named `terraform.tfvars`.
+
+    ```sh
+    cp terraform.tfvars.example terraform.tfvars
+    ```
+
+    その後、`terraform.tfvars` ファイルを開き、必要に応じてAWSプロファイルやプロジェクト名などの変数を編集します。
+    Then, open the `terraform.tfvars` file and edit variables such as the project name or aws profile as needed.
+
+
+### Step 2.2: Terraformの初期化 / Initialize Terraform
+
+設定が完了したら、Terraformのワーキングディレクトリを初期化します。これにより、必要なプロバイダプラグインがダウンロードされます。
+Once the configuration is complete, initialize the Terraform working directory. This will download the necessary provider plugins.
 
 ```sh
 terraform init
 ```
 
-### Step 2.2: 実行計画の確認 / Review the Execution Plan
+### Step 2.3: 実行計画の確認 / Review the Execution Plan
 
 次に、どのようなリソースが作成・変更されるかを確認するための実行計画を生成します。
 Next, generate an execution plan to see what resources will be created or modified.
@@ -40,7 +58,7 @@ terraform plan
 このコマンドの出力を確認し、意図した通りの変更が行われることを確認してください。
 Review the output of this command to ensure the changes are what you intend.
 
-### Step 2.3: 変更の適用 / Apply the Changes
+### Step 2.4: 変更の適用 / Apply the Changes
 
 計画に問題がなければ、変更を適用してAWS上にリソースを構築します。
 If the plan is acceptable, apply the changes to build the resources on AWS.
@@ -78,6 +96,13 @@ $(terraform output -raw configure_kubectl)
 
 このコマンドは、`~/.kube/config`ファイルにクラスタへの接続情報を自動的に書き込みます。
 This command will automatically write the cluster connection information to your `~/.kube/config` file.
+
+
+ * AWS CLIでデフォルト以外のprofile を指定している場合は以下のコマンドを実行してください
+If you are using an AWS CLI profile other than the default, please execute the following command
+```sh
+$(terraform output -raw configure_kubectl) --profile <profile_name>
+```
 
 ### Step 3.3: 接続の確認 / Verify the Connection
 

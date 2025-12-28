@@ -7,6 +7,12 @@ variable "aws_region" {
   default     = "ap-northeast-1"
 }
 
+variable "aws_profile" {
+  description = "AWS CLIプロファイル"
+  type        = string
+  default     = "default"
+}
+
 variable "environment" {
   description = "環境 (dev, staging, prod)"
   type        = string
