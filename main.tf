@@ -212,3 +212,14 @@ module "irsa_ebs_csi" {
     var.additional_tags
   )
 }
+
+# Karpenter用のモジュール
+module "karpenter" {
+
+  count             = var.karpenter_enabled ? 1 : 0
+  source            = "./modules/karpenter"
+  cluster_name      = local.cluster_name
+  oidc_provider_arn = module.eks.oidc_provider_arn
+  oidc_provider_url = module.eks.cluster_oidc_issuer_url
+  tags              = var.additional_tags
+}

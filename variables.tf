@@ -164,3 +164,10 @@ variable "additional_tags" {
   type        = map(string)
   default     = {}
 }
+
+# Karpenter設定
+variable "karpenter_enabled" {
+  description = "trueの場合、Karpenterモジュールと関連リソースが作成されます。"
+  type        = bool
+  default     = false
+}
