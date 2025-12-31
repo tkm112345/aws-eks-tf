@@ -135,3 +135,9 @@ output "kms_key_id" {
   description = "EKS暗号化で使用されるKMSキーのID"
   value       = try(module.eks.kms_key_id, null)
 }
+
+# Karpenter情報
+output "karpenter_controller_role_arn" {
+  description = "The ARN of the IAM role for the Karpenter controller"
+  value       = module.karpenter[0].karpenter_controller_role_arn
+}
